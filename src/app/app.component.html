@@ -1,12 +1,20 @@
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+  <h1>Welcome to {{ title }}!</h1>
 </div>
 
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+<ul class="orders-container">
+  <li class="order" *ngFor="let orderTile of orderTilesData; let i = index">
+    <div class="order__header" [attr.data-order-number]="orderTile.number" (click)="updateOrder(orderTile.number)">
+        <h2>Order No: {{orderTile.number}}</h2>
+        <h3>Status: {{orderTile.status}}</h3>
+    </div>
+    <div class="order__details">
+        <h4>Table number: {{i + 1}}</h4>
+        <ul>
+          <li *ngFor="let items of orderTile.line_items">{{items.name}}</li>
+        </ul>
+    </div>
+    <!-- <pre>{{orderTile | json}}</pre> -->
   </li>
 </ul>
 
