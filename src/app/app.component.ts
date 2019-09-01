@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       if (x === 'processing' && y === 'completed') {return -1;}
       if (x === 'completed' && y === 'processing') {return 1;}
       return 0;
-    });;
+    }); //date_created "2019-08-26T14:01:35"
     console.log(ordersData);
     this.orderTilesData = ordersData;
   }

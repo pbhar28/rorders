@@ -4,17 +4,20 @@
 
 <ul class="orders-container">
   <li class="order" *ngFor="let orderTile of orderTilesData; let i = index">
-    <div class="order__header" [attr.data-order-number]="orderTile.number" (click)="updateOrder(orderTile.number)">
-        <h2>Order No: {{orderTile.number}}</h2>
-        <h3>Status: {{orderTile.status}}</h3>
+    <div class="order__header {{orderTile.status | lowercase}}" [attr.data-order-number]="orderTile.number" (click)="updateOrder(orderTile.number)">
+        <h2>{{orderTile.number}}</h2>
+        <h3>{{orderTile.status | uppercase}}</h3>
     </div>
-    <div class="order__details">
-        <h4>Table number: {{i + 1}}</h4>
+    <div class="order__details">     
         <ul>
-          <li *ngFor="let items of orderTile.line_items">{{items.name}}</li>
+          <li *ngFor="let items of orderTile.line_items">{{items.name}} x {{items.quantity}}</li>
         </ul>
     </div>
     <!-- <pre>{{orderTile | json}}</pre> -->
+    <div class="order__footer">
+      <div class="table-number"><h4>{{orderTile.shipping.address_2}}</h4></div>
+      <div class="customer-note"><p>{{orderTile.customer_note}}</p></div>
+    </div>
   </li>
 </ul>
 
