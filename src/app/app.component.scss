@@ -13,6 +13,22 @@
         margin: 0 1% 14px 0;
         overflow: hidden;
         width: 24%;
+
+        &.delayed {
+            border-color: #c9101a;
+        }
+
+        &.on-time {
+            border-color: #D86F00;
+        }
+
+        &.normal {
+            border-color: #f4bf44;
+        }
+
+        &.completed {
+            border-color: #35a569;
+        }
     }
 }
 
@@ -49,6 +65,18 @@
 
         &.processing {
             background-color: #f4bf44; 
+        }
+
+        &.delayed {
+            background-color: #c9101a;
+        }
+
+        &.on-time {
+            background-color: #D86F00;
+        }
+
+        &.normal {
+            background-color: #f4bf44;
         }
 
         &.completed {

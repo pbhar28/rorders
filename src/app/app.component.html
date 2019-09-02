@@ -1,10 +1,10 @@
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <h1>Welcome to {{ title }}!</h1>
-</div>
+</div> -->
 
 <ul class="orders-container">
-  <li class="order" *ngFor="let orderTile of orderTilesData; let i = index">
-    <div class="order__header {{orderTile.status | lowercase}}" [attr.data-order-number]="orderTile.number" (click)="updateOrder(orderTile.number)">
+  <li class="order {{orderTile.customStatus | lowercase}}" *ngFor="let orderTile of orderTilesData; let i = index">
+    <div class="order__header {{orderTile.customStatus | lowercase}}" [attr.data-order-number]="orderTile.number" (click)="updateOrder(orderTile.number)">
         <h2>{{orderTile.number}}</h2>
         <h3>{{orderTile.status | uppercase}}</h3>
     </div>
