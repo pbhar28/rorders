@@ -23,9 +23,10 @@ export class AppComponent implements OnInit {
   calculateOrderTime(status, respDateCreated) {
     if (status != 'completed') {
       respDateCreated = `${respDateCreated}+00:00`;//+05:30
-      let dateCreated = Number(new Date(Date.parse(respDateCreated)));
-      let currentDate = Number(new Date());
-      let diff = parseInt((currentDate - dateCreated)/60000);
+      let dateCreated = <any>new Date(Date.parse(respDateCreated));
+      let currentDate = <any>new Date();
+      let diff = parseInt(<any>((currentDate - dateCreated)/60000));
+      console.log(diff);
   
       if(diff < 10) return 'normal'
       else if (diff >= 10 && diff < 15) return 'on-time'
