@@ -8,21 +8,17 @@ export class OrdersDataService {
 
   constructor(private http: HttpClient) { }
 
-  private _key = 'ck_5a2e407a2feb83a21cfc71f34f2039cb865cd235';
-  private _secret = 'cs_315fc9c098f10c13402691b195c2b820aee4d6d3'
-  private _url = `https://rewardr.in/wp-json/wc/v3/orders`;
+  private _key = 'ck_3e9b24c63bee47c3dbf427af4a11d673018353ee';
+  private _secret = 'cs_681eef8fae7fcdb5b9811fb444109a83a508e835';
+  private _url = 'https://stores.rewardr.in/wp-json/wc/v3/orders';
 
   getOrders(){
     let listOrdersUrl = `${this._url}?consumer_key=${this._key}&consumer_secret=${this._secret}`
     return this.http.get(listOrdersUrl);
   }
 
-  updateOrder(orderId){
+  updateOrder(orderId, request) {
     let updateOrderUrl = `${this._url}/${orderId}?consumer_key=${this._key}&consumer_secret=${this._secret}`;
-
-    const request = {
-      'status': 'completed'
-    };
 
     const httpOptions = {
       headers: new HttpHeaders({

@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
       let dateCreated = <any>new Date(Date.parse(respDateCreated));
       let currentDate = <any>new Date();
       let diff = parseInt(<any>((currentDate - dateCreated)/60000));
-      console.log(diff);
+      //console.log(diff);
   
       if(diff < 10) return 'normal'
       else if (diff >= 10 && diff < 15) return 'on-time'
@@ -50,12 +50,15 @@ export class AppComponent implements OnInit {
     
     //date_created "2019-08-26T14:01:35"
 
+    if (ordersData.length > 8) {
+      ordersData.splice(ordersData.length - 2 , 2);
+    }
     console.log(ordersData);
     this.orderTilesData = ordersData;
   }
 
   updateOrder(orderNo){
-    this.ordersDataService.updateOrder(orderNo).subscribe((data: any) => {
+    this.ordersDataService.updateOrder(orderNo, {'status': 'completed'}).subscribe((data: any) => {
       this.fetchOrderDetails();
       console.log('update order - success!');
       console.log(data);
